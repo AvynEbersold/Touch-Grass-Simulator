@@ -25,41 +25,23 @@ public class BackMenu : MonoBehaviour
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.menuButton, out buttonPressed);
-        Debug.Log(buttonPressed);
-        //if(buttonPressed == true)
-        //{
-        //if(buttonHeld == false)
-        //{
-        //Debug.Log("Menu should switch states now.");
-        //if(menuShowing = false)
-        //{
-        //backMenu.SetActive(true);
-        //menuShowing = true;
-        //} else
-        //{
-        //backMenu.SetActive(false);
-        //menuShowing = false;
-        //}
-        //buttonHeld = true;
-        //}
-        //buttonHeld = true;
-        //} else
-        //{
-        //buttonHeld = false;
-        //}
-        if (buttonPressed)
+        if(buttonPressed == true)
         {
-            Debug.Log("Menu should switch states now.");
-            if (menuShowing = false)
+            if(buttonHeld == false)
             {
-                backMenu.SetActive(true);
-                menuShowing = true;
+                if(menuShowing == false)
+                {
+                    backMenu.SetActive(true);
+                    menuShowing = true;
+                } else {
+                    backMenu.SetActive(false);
+                    menuShowing = false;
+                }
+                buttonHeld = true;
             }
-            else
-            {
-                backMenu.SetActive(false);
-                menuShowing = false;
-            }
+            buttonHeld = true;
+        } else {
+            buttonHeld = false;
         }
     } 
 }
