@@ -330,6 +330,7 @@ MonoBehaviour:
   playerStartHealth: 5
   playerCurrentHealth: 0
   healthText: {fileID: 1542322782}
+  deviceOrigin: {fileID: 8684213820506043749}
 --- !u!1 &1542322782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1403,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 3371954791573942695, guid: bad9fc8243559544fbbc93767e5cd5b9,
+  m_ModelPrefab: {fileID: 7467797688605753368, guid: 31070243142dafa4f8a7168597f92431,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -1843,6 +1844,8 @@ GameObject:
   - component: {fileID: 8684213819449969278}
   - component: {fileID: 8684213819449969274}
   - component: {fileID: 6789693419604067043}
+  - component: {fileID: 1752364101}
+  - component: {fileID: 1752364102}
   m_Layer: 0
   m_Name: Gameplay Origin
   m_TagString: Untagged
@@ -1949,6 +1952,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSource: 4
   backMenu: {fileID: 8620558782641047029}
+--- !u!114 &1752364101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684213820506043749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fff2ea458d381945a7800919e963f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 1211024824}
+--- !u!114 &1752364102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684213820506043749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02faf2e6538e4a942a8fb6d2a53be3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8684213820512774281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,7 +2026,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 3371954791573942695, guid: 5dcc90b1b6a583a4ba0fa6b14d543a3a,
+  m_ModelPrefab: {fileID: 7467797688605753368, guid: 31070243142dafa4f8a7168597f92431,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
