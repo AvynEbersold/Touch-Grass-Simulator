@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3180618928486681583}
   - component: {fileID: 366817114911382359}
   - component: {fileID: 6032079891355527118}
+  - component: {fileID: -6640296308089540097}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Hand
@@ -129,3 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d302d4fdd0095434cae7dbd0a63e867d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6640296308089540097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847842042714790562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fff2ea458d381945a7800919e963f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthDisplay: {fileID: 0}

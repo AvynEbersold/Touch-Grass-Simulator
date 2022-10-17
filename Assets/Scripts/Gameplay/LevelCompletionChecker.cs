@@ -12,7 +12,6 @@ public class LevelCompletionChecker : MonoBehaviour
 			string currentSceneNumber = currentSceneName.Substring(currentSceneName.Length - 1);
 			int nextSceneNumber = int.Parse(currentSceneNumber) + 1;
 			int buildIndex = SceneUtility.GetBuildIndexByScenePath("Level" + nextSceneNumber.ToString());
-			Debug.Log(buildIndex);
 			if(buildIndex > -1)
             {
 				SceneManager.LoadScene("Level" + nextSceneNumber.ToString(), LoadSceneMode.Single);

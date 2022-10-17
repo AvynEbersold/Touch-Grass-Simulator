@@ -41,6 +41,7 @@ public class HealthManager : MonoBehaviour
             if(healthLossCause == "Spikes")
             {
                 deviceOrigin.GetComponent<CheckpointManager>().RespawnAtMinicheckpoint();
+                deviceOrigin.GetComponent<ContinuousMovement>().ResetMomentum();
             }
         }
     }
