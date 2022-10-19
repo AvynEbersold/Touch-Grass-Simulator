@@ -17,7 +17,7 @@ public class LevelCompletionChecker : MonoBehaviour
 				SceneManager.LoadScene("Level" + nextSceneNumber.ToString(), LoadSceneMode.Single);
 			} else
             {
-				SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+				SceneManager.LoadScene("GameComplete", LoadSceneMode.Single);
 			}
         }
 	}

@@ -10,14 +10,21 @@ public class HealthManager : MonoBehaviour
     public int playerCurrentHealth;
     public GameObject healthText;
     public GameObject deviceOrigin;
+    public GameObject audioManager;
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+    public bool takingDamage = false;
 
     private TextMeshProUGUI healthTextComponent;
+    private AudioSource audioSourceComponent;
+    private bool hittableBySpikes = true;
 
     // Start is called before the first frame update
     void Start()
     {
         playerCurrentHealth = playerStartHealth;
         healthTextComponent = healthText.GetComponent<TextMeshProUGUI>();
+        audioSourceComponent = audioManager.GetComponent<AudioSource>();
         UpdateUI();
     }
 
@@ -29,20 +36,31 @@ public class HealthManager : MonoBehaviour
 
     public void LoseHealth(int healthToLose, string healthLossCause)
     {
-        playerCurrentHealth -= healthToLose;
-        UpdateUI();
-        if(playerCurrentHealth <= 0)
+        
+        if(!hittableBySpikes && healthLossCause == "Spikes")
         {
-            deviceOrigin.GetComponent<CheckpointManager>().RespawnAtCheckpoint();
-            playerCurrentHealth = playerStartHealth;
-            UpdateUI();
+
         } else
         {
-            if(healthLossCause == "Spikes")
+            playerCurrentHealth -= healthToLose;
+            deviceOrigin.GetComponent<ContinuousMovement>().ResetMomentum();
+            if (playerCurrentHealth <= 0)
             {
-                deviceOrigin.GetComponent<CheckpointManager>().RespawnAtMinicheckpoint();
-                deviceOrigin.GetComponent<ContinuousMovement>().ResetMomentum();
+                deviceOrigin.GetComponent<CheckpointManager>().RespawnAtCheckpoint();
+                playerCurrentHealth = playerStartHealth;
+                audioSourceComponent.PlayOneShot(deathSound);
             }
+            else
+            {
+                if (healthLossCause == "Spikes")
+                {
+                    hittableBySpikes = false;
+                    StartCoroutine(MakeHittableBySpikesAfterTime(0.2f));
+                    deviceOrigin.GetComponent<CheckpointManager>().RespawnAtMinicheckpoint();
+                    audioSourceComponent.PlayOneShot(damageSound);
+                }
+            }
+            UpdateUI();
         }
     }
 
@@ -52,4 +70,16 @@ public class HealthManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void RestoreFullHealth()
+    {
+        playerCurrentHealth = playerStartHealth;
+        UpdateUI();
+    }
+
+    IEnumerator MakeHittableBySpikesAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        hittableBySpikes = true;
+    }
 }

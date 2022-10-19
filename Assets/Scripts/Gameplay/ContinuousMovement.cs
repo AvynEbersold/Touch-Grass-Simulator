@@ -18,12 +18,17 @@ public class ContinuousMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask superJumpLayer;
     public float additionalHeight = 0.2f;
+    public GameObject audioManager;
+    public AudioClip jumpSound;
+    public bool jumpSoundEnabled;
+    public AudioClip superJumpSound;
 
     private XROrigin rig;
     private Vector2 inputAxis;
     private bool inputButtonPressed;
     private CharacterController character;
     private float fallingSpeed = 0;
+    private AudioSource audioSourceComponent;
 
     bool CheckIfOnGround()
     {
@@ -46,6 +51,7 @@ public class ContinuousMovement : MonoBehaviour
     {
         character = GetComponent<CharacterController>();
         rig = GetComponent<XROrigin>();
+        audioSourceComponent = audioManager.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -76,9 +82,14 @@ public class ContinuousMovement : MonoBehaviour
                 if (CheckIfOnSuperJump())
                 {
                     fallingSpeed = jumpPower * superJumpPowerMultiplier;
+                    audioSourceComponent.PlayOneShot(superJumpSound);
                 } else
                 {
                     fallingSpeed = jumpPower;
+                    if (jumpSoundEnabled)
+                    {
+                        audioSourceComponent.PlayOneShot(jumpSound);
+                    }
                 }
             }
         } else
