@@ -5,11 +5,18 @@ using UnityEngine.XR;
 using Unity.XR.CoreUtils;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// This script handles the movement, using the joystick, of the player, as well as the following:
+// - Gravity
+// - Ground interaction (eg. not falling through the ground)
+// - Jumping
+// - "Super" jumping
+// - Turning (using joystick)
+
 public class ContinuousMovement : MonoBehaviour
 {
 
-    public XRNode joystickInputSource;
-    public XRNode buttonInputSource;
+    public XRNode movementJoystickInputSource;
+    public XRNode jumpButtonInputSource;
     public GameObject cameraGameObject;
     public float speed = 1;
     public float jumpPower = 8;
@@ -24,7 +31,7 @@ public class ContinuousMovement : MonoBehaviour
     public AudioClip superJumpSound;
 
     private XROrigin rig;
-    private Vector2 inputAxis;
+    private Vector2 movementInputAxis;
     private bool inputButtonPressed;
     private CharacterController character;
     private float fallingSpeed = 0;
@@ -57,9 +64,10 @@ public class ContinuousMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(joystickInputSource);
-        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
-        InputDevice buttonDevice = InputDevices.GetDeviceAtXRNode(buttonInputSource);
+        InputDevice device = InputDevices.GetDeviceAtXRNode(movementJoystickInputSource);
+        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out movementInputAxis);
+
+        InputDevice buttonDevice = InputDevices.GetDeviceAtXRNode(jumpButtonInputSource);
         buttonDevice.TryGetFeatureValue(CommonUsages.primaryButton, out inputButtonPressed);
     }
 
@@ -69,7 +77,7 @@ public class ContinuousMovement : MonoBehaviour
 
         Quaternion headYaw = Quaternion.Euler(0, cameraGameObject.transform.eulerAngles.y, 0);
 
-        Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
+        Vector3 direction = headYaw * new Vector3(movementInputAxis.x, 0, movementInputAxis.y);
         character.Move(direction * Time.fixedDeltaTime * speed);
 
         // Apply gravity

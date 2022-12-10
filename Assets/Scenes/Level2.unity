@@ -4973,41 +4973,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8684213818760927559, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9213659
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213818760927559, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213818760927559, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.38869652
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213818760927559, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213818760927559, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -45.747
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213819449969274, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: jumpPower
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8684213819449969274, guid: a0a0671786b65134b95feb1a9712e235,
-        type: 3}
-      propertyPath: jumpSoundEnabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8684213820506043749, guid: a0a0671786b65134b95feb1a9712e235,
         type: 3}
       propertyPath: m_Name
