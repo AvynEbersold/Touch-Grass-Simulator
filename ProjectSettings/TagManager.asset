@@ -9,6 +9,7 @@ TagManager:
   - Spikes
   - Checkpoint
   - Minicheckpoint
+  - MovingObject
   layers:
   - Default
   - TransparentFX

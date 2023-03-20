@@ -45,6 +45,19 @@ public class ContinuousMovement : MonoBehaviour
         return hasHit;
     }
 
+    bool CheckIfOnMovingObject()
+    {
+        Vector3 rayStartPoint = transform.TransformPoint(character.center);
+        float rayLength = character.center.y + 0.02f;
+        bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+        Debug.Log("hitInfo: " + hitInfo);
+        if (hitInfo.transform.CompareTag("MovingObject"))
+        {
+            Debug.Log("Hit! now, move w/ moving object!");
+        }
+        return hasHit;
+    }
+
     bool CheckIfOnSuperJump()
     {
         Vector3 rayStartPoint = transform.TransformPoint(character.center);
@@ -104,6 +117,19 @@ public class ContinuousMovement : MonoBehaviour
         {
             fallingSpeed += gravity * Time.fixedDeltaTime;
         }
+
+        bool onMovingPlatform = CheckIfOnMovingObject();
+        //if (other.gameObject.tag == "platform")
+        //{
+        //transform.parent = other.transform;
+
+        //}
+        //if (other.gameObject.tag == "platform")
+        //{
+            //transform.parent = null;
+
+        //}
+
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
 
