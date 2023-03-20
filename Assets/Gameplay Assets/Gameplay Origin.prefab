@@ -1189,6 +1189,7 @@ GameObject:
   - component: {fileID: 8684213818760927546}
   - component: {fileID: 8684213818760927545}
   - component: {fileID: 8684213818760927544}
+  - component: {fileID: 113118777}
   m_Layer: 0
   m_Name: Main VR Camera
   m_TagString: MainCamera
@@ -1203,14 +1204,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8684213818760927558}
-  m_LocalRotation: {x: -0.0040090475, y: 0.6358373, z: -0.18200487, w: 0.75004596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0000013072929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8684213819873790087}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 13.029, y: 78.671, z: -16.587}
+  m_LocalEulerAnglesHint: {x: 0, y: 78.671, z: -16.587}
 --- !u!20 &8684213818760927547
 Camera:
   m_ObjectHideFlags: 0
@@ -1374,7 +1375,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1384,6 +1385,23 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &113118777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684213818760927558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 6e3d8aa9964f83842a026e8ecc7a674a, type: 2}
 --- !u!1 &8684213819146725761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,23 +2354,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementJoystickInputSource: 4
-  rotationJoystickInputSource: 5
   jumpButtonInputSource: 5
   cameraGameObject: {fileID: 8684213818760927558}
   speed: 5
   jumpPower: 7
   superJumpPowerMultiplier: 2.21
   gravity: -9.81
-  rotationDegrees: 0
-  rotationMode: snap
-  currentlyRotating: 0
-  joystickTurnThreshold: 0.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   superJumpLayer:
     serializedVersion: 2
     m_Bits: 64
+  movingObjectLayer:
+    serializedVersion: 2
+    m_Bits: 128
   additionalHeight: 0.2
   audioManager: {fileID: 385427160}
   jumpSound: {fileID: 8300000, guid: ee8ad734343f6f24e8d5334df5d8824c, type: 3}

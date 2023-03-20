@@ -24,6 +24,7 @@ public class ContinuousMovement : MonoBehaviour
     public float gravity = -9.81f;
     public LayerMask groundLayer;
     public LayerMask superJumpLayer;
+    public LayerMask movingObjectLayer;
     public float additionalHeight = 0.2f;
     public GameObject audioManager;
     public AudioClip jumpSound;
@@ -41,21 +42,28 @@ public class ContinuousMovement : MonoBehaviour
     {
         Vector3 rayStartPoint = transform.TransformPoint(character.center);
         float rayLength = character.center.y + 0.02f;
-        bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
-        return hasHit;
+        bool hasHitGround = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+        bool hasHitMovingObject = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo2, rayLength, groundLayer);
+        // returns true if the player is on top or something with the layer Ground OR MovingObject
+        if (hasHitGround || hasHitMovingObject)
+        {
+            return true;
+        } else { return false; }
     }
 
-    bool CheckIfOnMovingObject()
+    void RelativeMovementCheck()
     {
         Vector3 rayStartPoint = transform.TransformPoint(character.center);
         float rayLength = character.center.y + 0.02f;
-        bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
-        Debug.Log("hitInfo: " + hitInfo);
-        if (hitInfo.transform.CompareTag("MovingObject"))
+        bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, movingObjectLayer);
+        if (hasHit)
         {
-            Debug.Log("Hit! now, move w/ moving object!");
+            transform.parent = hitInfo.collider.gameObject.transform;
         }
-        return hasHit;
+        else
+        {
+            transform.parent = null;
+        }
     }
 
     bool CheckIfOnSuperJump()
@@ -118,17 +126,7 @@ public class ContinuousMovement : MonoBehaviour
             fallingSpeed += gravity * Time.fixedDeltaTime;
         }
 
-        bool onMovingPlatform = CheckIfOnMovingObject();
-        //if (other.gameObject.tag == "platform")
-        //{
-        //transform.parent = other.transform;
-
-        //}
-        //if (other.gameObject.tag == "platform")
-        //{
-            //transform.parent = null;
-
-        //}
+        RelativeMovementCheck();
 
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
