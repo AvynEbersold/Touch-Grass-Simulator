@@ -54,7 +54,7 @@ public class ContinuousMovement : MonoBehaviour
     bool CheckIfOnMovingObject()
     {
         Vector3 rayStartPoint = transform.TransformPoint(character.center);
-        float rayLength = character.center.y + 0.02f;
+        float rayLength = character.center.y + 0.5f;
         bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, movingObjectLayer);
         if (hasHit)
         {
@@ -106,7 +106,9 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * speed);
 
         // Apply gravity
-        bool onGround = CheckIfOnGround() || CheckIfOnMovingObject();
+        bool onMovingObjectCheck = CheckIfOnMovingObject();
+        bool onGroundCheck = CheckIfOnGround();
+        bool onGround = onGroundCheck || onMovingObjectCheck;
         if (onGround == true)
         {
             fallingSpeed = 0;

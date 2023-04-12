@@ -13,5 +13,5 @@ public class DamageReceivedChecker : MonoBehaviour
 		{
 			healthDisplay.GetComponent<HealthManager>().LoseHealth(1, "Spikes");
 		}
-	}
+    }
 }
