@@ -14,6 +14,7 @@ public class LoadMainMenuScene : MonoBehaviour
 
     private void LoadCurrentLevelFunction()
     {
+        GameData.gameCompleted = false;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 

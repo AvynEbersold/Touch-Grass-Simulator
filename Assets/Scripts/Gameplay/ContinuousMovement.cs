@@ -51,18 +51,22 @@ public class ContinuousMovement : MonoBehaviour
         } else { return false; }
     }
 
-    void RelativeMovementCheck()
+    bool CheckIfOnMovingObject()
     {
         Vector3 rayStartPoint = transform.TransformPoint(character.center);
         float rayLength = character.center.y + 0.02f;
         bool hasHit = Physics.SphereCast(rayStartPoint, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, movingObjectLayer);
         if (hasHit)
         {
+            Debug.Log("On moving object!");
             transform.parent = hitInfo.collider.gameObject.transform;
+            return true;
         }
         else
         {
+            //Debug.Log("NOT on moving object!");
             transform.parent = null;
+            return false;
         }
     }
 
@@ -102,7 +106,7 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * speed);
 
         // Apply gravity
-        bool onGround = CheckIfOnGround();
+        bool onGround = CheckIfOnGround() || CheckIfOnMovingObject();
         if (onGround == true)
         {
             fallingSpeed = 0;
@@ -126,7 +130,7 @@ public class ContinuousMovement : MonoBehaviour
             fallingSpeed += gravity * Time.fixedDeltaTime;
         }
 
-        RelativeMovementCheck();
+        CheckIfOnMovingObject();
 
         character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
     }
