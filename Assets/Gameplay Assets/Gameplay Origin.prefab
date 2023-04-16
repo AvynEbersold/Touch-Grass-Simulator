@@ -31,12 +31,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1211024825}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 450, y: 0}
-  m_SizeDelta: {x: 900, y: 80}
+  m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &246984046
 CanvasRenderer:
@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5605968, g: 1, b: 0.4764151, a: 0.39215687}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.5605968, g: 1, b: 0.4764151, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -684,6 +684,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2add88d4c76bf224fbaae2c84d069f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1141000028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141000029}
+  - component: {fileID: 1141000031}
+  - component: {fileID: 1141000030}
+  m_Layer: 9
+  m_Name: Health Bar Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1141000029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141000028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1211024825}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: 0}
+  m_SizeDelta: {x: 900, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1141000031
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141000028}
+  m_CullTransparentMesh: 0
+--- !u!114 &1141000030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141000028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 0.3882353}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1211024824
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +789,7 @@ RectTransform:
   m_LocalScale: {x: 0.0003, y: 0.0003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1141000029}
   - {fileID: 246984044}
   - {fileID: 1542322783}
   m_Father: {fileID: 8684213818760927559}
@@ -811,6 +885,21 @@ MonoBehaviour:
   damageSound: {fileID: 8300000, guid: de27d72d17e1ac343930f2d8a5039d26, type: 3}
   deathSound: {fileID: 8300000, guid: aa103f4e08476f34fa07f2e1a6274091, type: 3}
   takingDamage: 0
+  highHealthColor:
+    serializedVersion: 2
+    rgba: 4280272934
+  medHighHealthColor:
+    serializedVersion: 2
+    rgba: 4281258422
+  medHealthColor:
+    serializedVersion: 2
+    rgba: 4281774041
+  medLowHealthColor:
+    serializedVersion: 2
+    rgba: 4279923441
+  lowHealthColor:
+    serializedVersion: 2
+    rgba: 4280167421
 --- !u!1 &1542322782
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +931,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1211024825}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -904,8 +993,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
